@@ -15,22 +15,23 @@
   <!-- Using Tailwind via CDN -->
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
 
-
   <!-- https://v3.vuejs.org/guide/installation.html#release-notes -->
   <!-- Vue CDN -->
   <script src="https://unpkg.com/vue@next"></script>
 </head>
 
 <body id="app" class="w-full bg-yellow-100">
-<photo-view :viewing="viewing" @dis-toggle="distoggleView"></photo-view>
-  <!-- Total Photos like -->
-  <div  class="max-w-xl mx-auto space-y-3 ">
-    
+  <!-- photoView -->
+  <photo-view :viewing="viewing" @dis-toggle="distoggleView"></photo-view>
+  <div class="max-w-xl mx-auto space-y-3">
     <h1 class="text-3xl text-start">
+      <!-- Total Photos like -->
       Photo Gallery Like ( {{ photos.filter( t => t.done ).length }} )
     </h1>
-    <photo-search :searchbutton='searchbutton' @search-box="search" v-model:text="text"></photo-search>
-    <div class="w-96 " v-if="searching.length !== 0 ">
+    <!-- photoSearch -->
+    <photo-search :searchbutton="searchbutton" @search-box="search" v-model:text="text"></photo-search>
+    <!-- photoItems -->
+    <div class="w-96" v-if="searching.length !== 0 ">
       <ul>
         <li v-for="(photo,index) in searching" :class="{done: photo.done}">
           <photo-items :photo="photo" @toggle-done="toggle"></photo-items>
@@ -41,9 +42,7 @@
     <div v-else class="mt-10 bg-white shadow-lg rounded w-full mx-auto px-auto py-5 flex justify-center">
       <h2 class="mb-2 text-2xl font-bold text-gray-800">No Photos.</h2>
     </div>
-    
   </div>
-  
 
   <!-- my main.js -->
 
@@ -54,7 +53,7 @@
   <script src="./component/PhotoView.js"></script>
 
   <script>
-    const mountedApp = app.mount('#app')
+    const mountedApp = app.mount("#app");
   </script>
 </body>
 
